@@ -15,4 +15,16 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
-          script: bash ./git_on_production.sh & exit
+          script: |
+            cd FerretDeployTest
+            echo "Stopping server"
+            pkill node || true
+            echo "Pulling latest"
+            git pull
+            echo "Starting server"
+            nohup node index &
+            echo "Started server"
+            exit
+
+
+
