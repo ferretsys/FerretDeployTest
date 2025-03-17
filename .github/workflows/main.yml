@@ -22,7 +22,7 @@ jobs:
             echo "Pulling latest"
             git pull
             echo "Starting server"
-            nohup node index &
+            (&>/dev/null nohup node index &)
             echo "Started server"
             exit
 
