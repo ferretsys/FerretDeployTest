@@ -1,5 +1,8 @@
 name: run publish script on server
-on: [push]
+on:
+  push:
+    branches:
+      - production
 jobs:
   build:
     name: Build
@@ -12,4 +15,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
-          script: whoami
+          script: echo hi
