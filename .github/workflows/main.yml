@@ -1,4 +1,4 @@
-name: run publish script on server
+name: Publish latest code to server
 on:
   push:
     branches:
@@ -15,4 +15,16 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
-          script: bash ./git_action_production.sh
+          script: |
+            cd FerretDeployTest
+            echo "Stopping server"
+            pkill node || true
+            echo "Pulling latest"
+            git pull
+            echo "Starting server"
+            (&>/dev/null nohup node index &)
+            echo "Started server"
+            exit
+
+
+
