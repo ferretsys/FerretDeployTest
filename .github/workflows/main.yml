@@ -15,4 +15,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
-          script: bash ./git_on_production.sh
+          script: bash ./git_on_production.sh && exit
