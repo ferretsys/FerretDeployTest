@@ -4,6 +4,7 @@ const fs = require("fs");
 const app = express();
 
 app.get('/', (req, res) => {
+    console.log("serving")
     res.send('Hello' + fs.readFileSync("served.txt"));
 });
 
