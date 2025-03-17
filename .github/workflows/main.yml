@@ -1,4 +1,4 @@
-name: run publish script on server
+name: Publish latest code to server
 on:
   push:
     branches:
@@ -15,4 +15,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
-          script: bash ./git_action_production.sh
+          script: bash ./git_on_production.sh
